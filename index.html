@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Kelas SMK - TKJ & TSM</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <h2>Kelas 10 TKJ & TSM</h2>
+                </div>
+                <div class="nav-menu" id="nav-menu">
+                    <a href="#home" class="nav-link">Beranda</a>
+                    <a href="#profile" class="nav-link">Profil Kelas</a>
+                    <a href="#students" class="nav-link">Data Siswa</a>
+                    <a href="#mading" class="nav-link">Mading Digital</a>
+                    <a href="#gallery" class="nav-link">Galeri</a>
+                    <a href="#contact" class="nav-link">Kontak</a>
+                    <a href="admin/" class="nav-link admin-btn">Admin</a>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Kelas 10 <span class="highlight">TKJ & TSM</span></h1>
+            <p>SMK Negeri 1 Teknologi</p>
+            <p>Membangun Generasi Teknisi Profesional dan Berkarakter</p>
+            <a href="#students" class="cta-button">Lihat Profil Siswa</a>
+        </div>
+        <div class="hero-image">
+            <div class="tech-icons">
+                <i class="fas fa-network-wired"></i>
+                <i class="fas fa-microchip"></i>
+                <i class="fas fa-tools"></i>
+                <i class="fas fa-car"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profil Kelas -->
+    <section id="profile" class="profile">
+        <div class="container">
+            <h2 class="section-title">Profil Kelas</h2>
+            <div class="profile-content">
+                <div class="profile-text">
+                    <h3>Kelas 10 Teknik Komputer dan Jaringan & Teknik Sepeda Motor</h3>
+                    <p>Kami adalah siswa-siswi SMK yang sedang menempuh pendidikan di bidang teknologi informasi dan teknik otomotif. Dengan semangat belajar yang tinggi, kami siap menghadapi tantangan di era digital dan industri 4.0.</p>
+                    
+                    <div class="jurusan-info">
+                        <div class="jurusan-card">
+                            <i class="fas fa-network-wired"></i>
+                            <h4>Teknik Komputer dan Jaringan (TKJ)</h4>
+                            <p>Mempelajari instalasi, konfigurasi, dan perawatan jaringan komputer serta sistem telekomunikasi.</p>
+                        </div>
+                        <div class="jurusan-card">
+                            <i class="fas fa-tools"></i>
+                            <h4>Teknik Sepeda Motor (TSM)</h4>
+                            <p>Mempelajari perawatan, perbaikan, dan modifikasi sepeda motor sesuai standar industri.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-stats">
+                    <div class="stat-item">
+                        <h4>30</h4>
+                        <p>Total Siswa</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>15</h4>
+                        <p>Siswa TKJ</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>15</h4>
+                        <p>Siswa TSM</p>
+                    </div>
+                    <div class="stat-item">
+                        <h4>3</h4>
+                        <p>Guru Pembimbing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Siswa -->
+    <section id="students" class="students">
+        <div class="container">
+            <h2 class="section-title">Data Siswa</h2>
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">Semua</button>
+                <button class="filter-btn" data-filter="tkj">TKJ</button>
+                <button class="filter-btn" data-filter="tsm">TSM</button>
+            </div>
+            <div class="students-grid" id="students-container">
+                <!-- Data siswa akan dimuat di sini melalui JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Mading Digital -->
+    <section id="mading" class="mading">
+        <div class="container">
+            <h2 class="section-title">Mading Digital</h2>
+            <div class="mading-grid" id="mading-container">
+                <!-- Konten mading akan dimuat di sini melalui JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Galeri -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title">Galeri Kegiatan</h2>
+            <div class="gallery-grid" id="gallery-container">
+                <!-- Gambar galeri akan dimuat di sini melalui JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Kontak -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title">Kontak Kami</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>Alamat</h4>
+                            <p>Jl. Pendidikan No. 123, Kota Teknologi</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>Telepon</h4>
+                            <p>(021) 1234-5678</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>Email</h4>
+                            <p>kelas10tkjtsm@smknegeri1.sch.id</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form id="contactForm">
+                        <input type="text" placeholder="Nama" required>
+                        <input type="email" placeholder="Email" required>
+                        <textarea placeholder="Pesan" rows="5" required></textarea>
+                        <button type="submit">Kirim Pesan</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Kelas 10 TKJ & TSM</h3>
+                    <p>SMK Negeri 1 Teknologi</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Link Cepat</h3>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#profile">Profil Kelas</a></li>
+                        <li><a href="#students">Data Siswa</a></li>
+                        <li><a href="#mading">Mading Digital</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Ikuti Kami</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 Kelas 10 TKJ & TSM. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

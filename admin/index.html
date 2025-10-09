@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Profil Kelas</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .admin-container {
+            max-width: 1200px;
+            margin: 100px auto 50px;
+            padding: 0 20px;
+        }
+        
+        .admin-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .admin-tabs {
+            display: flex;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #ddd;
+        }
+        
+        .admin-tab {
+            padding: 15px 30px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            border-bottom: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .admin-tab.active {
+            border-bottom-color: var(--secondary-color);
+            color: var(--secondary-color);
+            font-weight: bold;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .admin-form {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        
+        .form-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+        
+        .btn-primary {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .btn-secondary {
+            background-color: #95a5a6;
+            color: white;
+        }
+        
+        .btn-danger {
+            background-color: var(--accent-color);
+            color: white;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .data-table th,
+        .data-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .data-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .data-table tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        .action-buttons {
+            display: flex;
+            gap: 5px;
+        }
+        
+        .action-btn {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+        
+        .back-to-site {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            z-index: 1000;
+        }
+    </style>
+</head>
+<body>
+    <a href="../index.html" class="back-to-site">
+        <i class="fas fa-arrow-left"></i> Kembali ke Situs
+    </a>
+
+    <div class="admin-container">
+        <div class="admin-header">
+            <h1>Admin Panel - Kelas 10 TKJ & TSM</h1>
+            <p>Kelola data siswa, mading, dan galeri</p>
+        </div>
+
+        <div class="admin-tabs">
+            <button class="admin-tab active" data-tab="students">Data Siswa</button>
+            <button class="admin-tab" data-tab="mading">Mading Digital</button>
+            <button class="admin-tab" data-tab="gallery">Galeri</button>
+            <button class="admin-tab" data-tab="settings">Pengaturan</button>
+        </div>
+
+        <!-- Tab Data Siswa -->
+        <div id="students-tab" class="tab-content active">
+            <div class="admin-form">
+                <h3>Tambah/Edit Data Siswa</h3>
+                <form id="studentForm">
+                    <input type="hidden" id="studentId">
+                    <div class="form-group">
+                        <label for="studentName">Nama Siswa</label>
+                        <input type="text" id="studentName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentJurusan">Jurusan</label>
+                        <select id="studentJurusan" required>
+                            <option value="">Pilih Jurusan</option>
+                            <option value="tkj">TKJ</option>
+                            <option value="tsm">TSM</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentPhoto">Foto</label>
+                        <input type="file" id="studentPhoto" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label for="studentBio">Biodata</label>
+                        <textarea id="studentBio" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="studentSkills">Keterampilan (pisahkan dengan koma)</label>
+                        <input type="text" id="studentSkills" placeholder="Networking, Linux, Cybersecurity">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="button" class="btn btn-secondary" id="resetStudentForm">Reset</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="data-list">
+                <h3>Daftar Siswa</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Nama</th>
+                            <th>Jurusan</th>
+                            <th>Biodata</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentsTable">
+                        <!-- Data siswa akan dimuat di sini -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tab Mading Digital -->
+        <div id="mading-tab" class="tab-content">
+            <div class="admin-form">
+                <h3>Tambah/Edit Mading</h3>
+                <form id="madingForm">
+                    <input type="hidden" id="madingId">
+                    <div class="form-group">
+                        <label for="madingTitle">Judul</label>
+                        <input type="text" id="madingTitle" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="madingContent">Konten</label>
+                        <textarea id="madingContent" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="madingImage">Gambar</label>
+                        <input type="file" id="madingImage" accept="image/*">
+                    </div>
+                    <div class="form-group">
+                        <label for="madingDate">Tanggal</label>
+                        <input type="date" id="madingDate" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                        <button type="button" class="btn btn-secondary" id="resetMadingForm">Reset</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="data-list">
+                <h3>Daftar Mading</h3>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Judul</th>
+                            <th>Tanggal</th>
+                            <th>Konten</th>
+                            <th>Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="madingTable">
+                        <!-- Data mading akan dimuat di sini -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Tab Galeri -->
+        <div id="gallery-tab" class="tab-content">
+            <div class="admin-form">
+                <h3>Tambah Gambar Galeri</h3>
+                <form id="galleryForm">
+                    <div class="form-group">
+                        <label for="galleryImage">Gambar</label>
+                        <input type="file" id="galleryImage" accept="image/*" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Tambah</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="data-list">
+                <h3>Daftar Gambar Galeri</h3>
+                <div class="gallery-grid-admin" id="galleryTable">
+                    <!-- Gambar galeri akan dimuat di sini -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab Pengaturan -->
+        <div id="settings-tab" class="tab-content">
+            <div class="admin-form">
+                <h3>Pengaturan Situs</h3>
+                <form id="settingsForm">
+                    <div class="form-group">
+                        <label for="siteTitle">Judul Situs</label>
+                        <input type="text" id="siteTitle" value="Kelas 10 TKJ & TSM">
+                    </div>
+                    <div class="form-group">
+                        <label for="siteDescription">Deskripsi Situs</label>
+                        <textarea id="siteDescription" rows="3">SMK Negeri 1 Teknologi - Membangun Generasi Teknisi Profesional dan Berkarakter</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="contactEmail">Email Kontak</label>
+                        <input type="email" id="contactEmail" value="kelas10tkjtsm@smknegeri1.sch.id">
+                    </div>
+                    <div class="form-group">
+                        <label for="contactPhone">Telepon Kontak</label>
+                        <input type="text" id="contactPhone" value="(021) 1234-5678">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary">Simpan Pengaturan</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="admin-form">
+                <h3>Ekspor/Impor Data</h3>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-primary" id="exportData">Ekspor Semua Data</button>
+                    <button type="button" class="btn btn-secondary" id="importData">Impor Data</button>
+                    <input type="file" id="importFile" accept=".json" style="display: none;">
+                </div>
+            </div>
+
+            <div class="admin-form">
+                <h3>Reset Data</h3>
+                <p>Hati-hati! Tindakan ini akan menghapus semua data dan tidak dapat dibatalkan.</p>
+                <div class="form-actions">
+                    <button type="button" class="btn btn-danger" id="resetAllData">Reset Semua Data</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>
