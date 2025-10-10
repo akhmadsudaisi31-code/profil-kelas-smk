@@ -4,7 +4,7 @@ const studentsData = [
         id: 1,
         name: "Ahmad Rizki",
         jurusan: "tkj",
-        photo: "assets/images/student1.jpg",
+        photo: "assets/images/pas.jpg",
         bio: "Siswa TKJ yang tertarik dengan jaringan komputer dan cybersecurity.",
         skills: ["Networking", "Linux", "Cybersecurity"]
     },
@@ -12,7 +12,7 @@ const studentsData = [
         id: 2,
         name: "Budi Santoso",
         jurusan: "tsm",
-        photo: "assets/images/student2.jpg",
+        photo: "assets/images/pas.jpg",
         bio: "Siswa TSM dengan minat pada modifikasi mesin motor sport.",
         skills: ["Engine Tuning", "Electrical System", "Brake System"]
     }
@@ -195,4 +195,5 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
 });
